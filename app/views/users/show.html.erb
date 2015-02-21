@@ -5,5 +5,11 @@
   <%= @user.name %>
 </p>
 
+<p>
+<% attache_urls(@user.photo_path, '180x180#') do |url| %>
+  <%= image_tag(url) %>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

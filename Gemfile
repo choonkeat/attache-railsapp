@@ -45,3 +45,4 @@ end
 
 gem "therubyracer"
 gem "less-rails"
+gem "attache_client"

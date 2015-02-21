@@ -15,6 +15,10 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :photo_path %><br>
+    <%= f.file_field :photo_path, multiple: true, **attache_options('180x180#', f.object.photo_path) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
