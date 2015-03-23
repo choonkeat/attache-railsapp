@@ -15,6 +15,16 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar, f.object.avatar_options('190x190#', placeholder: image_path('placeholder.png')) %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.label :photos %><br>
+      <%= f.file_field :photos, f.object.photos_options('190x75#', placeholder: image_path('placeholder.png')) %>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
