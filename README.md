@@ -1,3 +1,4 @@
 Sample Rails app for [attache_rails](https://github.com/choonkeat/attache_rails)
 
-[![screencast](https://cloud.githubusercontent.com/assets/473/6314839/146b1c2c-ba29-11e4-9e1e-f09aa2e1925f.gif)](http://youtu.be/c0QiVaeSlWM)
+![screencast](https://cloud.githubusercontent.com/assets/473/6822383/3a9ceb14-d31a-11e4-899e-568f285e3107.gif)
+
