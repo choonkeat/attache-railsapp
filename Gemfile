@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,5 +46,12 @@ end
 
 gem "therubyracer"
 gem "less-rails"
+gem "slim-rails"
+gem "rails_utils"
+gem "kaminari"
+gem "simple_form"
+gem "rack-cors", require: "rack/cors" # CORS for fonts through Cloudfront
+gem "rails_12factor", group: :production
+gem "font-awesome-sass"
 
 gem "attache_rails"

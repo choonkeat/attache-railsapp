@@ -1,0 +1,43 @@
+.jumbotron
+  h1
+    => link_to "Attache server", "https://github.com/choonkeat/attache#readme", target: "_blank"
+    ' demo
+  p
+    => link_to "This demo app", "https://github.com/choonkeat/attache-railsapp", target: "_blank"
+    ' uses the
+    => link_to "attache_rails gem", "https://github.com/choonkeat/attache_rails#readme", target: "_blank"
+    ' to integrate with a free &amp; open source
+    = link_to "attache file server", "https://github.com/choonkeat/attache#readme", target: "_blank"
+  p
+    ' On this demo server, files are not backed up to any cloud storage and records are purged periodically.
+  p
+    = link_to "» Read more about attache", "https://github.com/choonkeat/attache#readme", target: "_blank", class: "btn btn-lg btn-primary"
+
+.pull-right
+  = link_to icon('plus', t('helpers.links.new', model: User.model_name.human)), new_user_path, class: 'btn btn-primary'
+
+table.table.table-hover
+  thead
+    tr
+      th User name
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td= link_to user.name, user
+        td.text-right
+          .btn-group
+            = link_to user_path(user), class: 'btn btn-success btn-sm' do
+              = icon 'eye'  , t('helpers.links.show', model: User.model_name.human)
+            = link_to edit_user_path(user), class: 'btn btn-warning btn-sm' do
+              = icon 'edit' , t('helpers.links.edit', model: User.model_name.human)
+          =< link_to user_path(user), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do
+            = icon 'trash', t('helpers.links.destroy', model: User.model_name.human)
+
+hr
+
+.row
+  .col-sm-6
+    = page_entries_info @users, entry_name: User.model_name.human
+  .col-sm-6
+    = paginate(@users)

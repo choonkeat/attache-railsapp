@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require react/react
 //= require attache
 //= require_tree .
+
+Turbolinks.enableProgressBar();

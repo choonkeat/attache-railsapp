@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    User.where("created_at < ?", ENV.fetch("EXPIRE_SECONDS") { 30.minutes }.to_i.seconds.ago).each(&:destroy)
+    @users = User.all.page(params[:page])
   end
 
   # GET /users/1

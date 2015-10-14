@@ -8,4 +8,7 @@ Rails.application.config.assets.paths << 'vendor/assets/components'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile +=
+  Dir['vendor/assets/components/**/*.{otf,svg,woff,woff2,eot,ttf}'].collect do |path|
+    path['vendor/assets/components/'.length..-1]
+  end

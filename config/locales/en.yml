@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    disable_with: 'Processing..'
+    confirm: 'Are you sure you want to delete this?'

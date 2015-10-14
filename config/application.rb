@@ -20,6 +20,15 @@ module AttacheRailsapp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # https://github.com/cyu/rack-cors
+    # Note that this might still not work as static files are usually served from the web server
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+      allow do
+        origins ENV.fetch('WWW_HOSTNAME') { '*' }
+        resource '/assets/*', :headers => :any, :methods => [:head, :get, :options]
+      end
+    end
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

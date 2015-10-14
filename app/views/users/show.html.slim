@@ -1,0 +1,52 @@
+.page-header
+  h1 User
+
+.panel.panel-default
+  table.table.table-striped
+    tbody
+      tr
+        th width="250" Name
+        td= @user.name
+
+      tr
+        th Avatar
+
+        td
+          pre
+            code
+              ' = image_tag @user.avatar_url('100x100#')
+
+          = image_tag @user.avatar_url('100x100#')
+
+          hr
+          p Raw data
+          pre
+            code= @user.avatar.to_json
+
+      tr
+        th Photos
+
+        td
+          pre
+            code
+              ' - @user.photos_urls('200x200#').each do |url|
+                  = image_tag url
+
+          - @user.photos_urls('200x200#').each do |url|
+            = image_tag url
+
+          hr
+          p Raw data
+          pre
+            code= @user.photos.to_json
+
+
+hr
+.btn-group
+  = link_to edit_user_path(@user), class: 'btn btn-warning' do
+    = icon 'edit' , t('helpers.links.edit', model: User.model_name.human)
+= ' or '
+= link_to t('.cancel', default: t('helpers.links.cancel')), users_path
+.pull-right
+  = link_to user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do
+    = icon 'trash', t('helpers.links.destroy', model: User.model_name.human)
