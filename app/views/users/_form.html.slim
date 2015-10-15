@@ -1,31 +1,66 @@
-= simple_form_for @user, html: { class: 'form-horizontal col-sm-12' } do |f|
-  = f.input :name
+.row
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        h4 Schema
+      .panel-body
+        pre
+          code
+            ' create_table "users" do |t|
+                t.string "name"
+                t.json   "avatar"
+                t.json   "photos"
+              end
 
-  = f.input :avatar do
-    pre
-      code
-        ' = f.file_field :avatar, f.object.avatar_options('190x190#', placeholder: image_path('placeholder.png'))
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        h4 Model
+      .panel-body
+        pre
+          code
+            ' class User &lt; ActiveRecord::Base
+                has_one_attache   :avatar
+                has_many_attaches :photos
+                validates_presence_of :name
+              end
 
-    = f.file_field :avatar, f.object.avatar_options('190x190#', placeholder: image_path('placeholder.png'))
+.panel.panel-default
+  .panel-heading
+    h4 Form
+  .panel-body
+    = simple_form_for @user, html: { class: 'form-horizontal col-sm-12' } do |f|
+      = f.input :name
 
-  = f.input :photos do
-    pre
-      code
-        ' = f.file_field :photos, f.object.photos_options('190x75#', placeholder: image_path('placeholder.png'))
-    = f.file_field :photos, f.object.photos_options('190x75#', placeholder: image_path('placeholder.png'))
+      = f.input :avatar do
+        pre
+          code= f.object.avatar.to_json
+        pre
+          code
+            ' = f.file_field :avatar, f.object.avatar_options('190x190#', placeholder: image_path('placeholder.png'))
 
-  .form-action.form-group
-    .form-left-offset.form-right
-      - if f.object.new_record?
-        => f.button :button, class: 'btn btn-primary', data: { disable_with: t('helpers.disable_with') } do
-          = icon 'check-square-o', t('helpers.submit.create', model: f.object.class.model_name.human.titleize)
-        = ' or '
-        = link_to t('.cancel', default: t('helpers.links.cancel')), users_path
-      - else
-        => f.button :button, class: 'btn btn-primary', data: { disable_with: t('helpers.disable_with') } do
-          = icon 'check-square-o', t('helpers.submit.update', model: f.object.class.model_name.human.titleize)
-        = ' or '
-        = link_to t('.cancel', default: t('helpers.links.cancel')), user_path(@user)
-        .pull-right
-          = link_to user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t('helpers.confirm'), disable_with: t('helpers.disable_with') } do
-            = icon 'trash', t('.destroy', default: t('helpers.links.destroy'))
+        = f.file_field :avatar, f.object.avatar_options('190x190#', placeholder: image_path('placeholder.png'))
+
+      = f.input :photos do
+        pre
+          code= f.object.photos.to_json
+        pre
+          code
+            ' = f.file_field :photos, f.object.photos_options('190x75#', placeholder: image_path('placeholder.png'))
+        = f.file_field :photos, f.object.photos_options('190x75#', placeholder: image_path('placeholder.png'))
+
+      .form-action.form-group
+        .form-left-offset.form-right
+          - if f.object.new_record?
+            => f.button :button, class: 'btn btn-primary', data: { disable_with: t('helpers.disable_with') } do
+              = icon 'check-square-o', t('helpers.submit.create', model: f.object.class.model_name.human.titleize)
+            = ' or '
+            = link_to t('.cancel', default: t('helpers.links.cancel')), users_path
+          - else
+            => f.button :button, class: 'btn btn-primary', data: { disable_with: t('helpers.disable_with') } do
+              = icon 'check-square-o', t('helpers.submit.update', model: f.object.class.model_name.human.titleize)
+            = ' or '
+            = link_to t('.cancel', default: t('helpers.links.cancel')), user_path(@user)
+            .pull-right
+              = link_to user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t('helpers.confirm'), disable_with: t('helpers.disable_with') } do
+                = icon 'trash', t('.destroy', default: t('helpers.links.destroy'))

@@ -2,46 +2,34 @@
   h1 User
 
 .panel.panel-default
-  table.table.table-striped
-    tbody
-      tr
-        th width="250" Name
-        td= @user.name
+  .panel-heading
+    h4 Name
+  .panel-body
+    pre.pre-x-scrollable
+      code= @user.name.to_json
+  .panel-heading
+    h4 Avatar
+  .panel-body
+    pre.pre-x-scrollable
+      code= JSON.pretty_generate @user.avatar
+    pre.pre-x-scrollable
+      code
+        ' = image_tag @user.avatar_url('100x100#')
 
-      tr
-        th Avatar
+    = image_tag @user.avatar_url('100x100#')
+  .panel-heading
+    h4 Photos
+  .panel-body
+    pre.pre-x-scrollable
+      code= JSON.pretty_generate @user.photos
+    pre.pre-x-scrollable
+      code
+        ' - @user.photos_urls('200x200#').each do |url|
+            => image_tag url
 
-        td
-          pre
-            code
-              ' = image_tag @user.avatar_url('100x100#')
+    - @user.photos_urls('200x200#').each do |url|
+      => image_tag url
 
-          = image_tag @user.avatar_url('100x100#')
-
-          hr
-          p Raw data
-          pre
-            code= @user.avatar.to_json
-
-      tr
-        th Photos
-
-        td
-          pre
-            code
-              ' - @user.photos_urls('200x200#').each do |url|
-                  = image_tag url
-
-          - @user.photos_urls('200x200#').each do |url|
-            = image_tag url
-
-          hr
-          p Raw data
-          pre
-            code= @user.photos.to_json
-
-
-hr
 .btn-group
   = link_to edit_user_path(@user), class: 'btn btn-warning' do
     = icon 'edit' , t('helpers.links.edit', model: User.model_name.human)
