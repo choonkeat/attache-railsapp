@@ -11,17 +11,18 @@
     h4 Avatar
   .panel-body
     pre.pre-x-scrollable
-      code= JSON.pretty_generate @user.avatar
+      code= JSON.pretty_generate @user.avatar if @user.avatar.present?
+
     pre.pre-x-scrollable
       code
         ' = image_tag @user.avatar_url('100x100#')
 
-    = image_tag @user.avatar_url('100x100#')
+    = image_tag @user.avatar_url('100x100#') if @user.avatar.present?
   .panel-heading
     h4 Photos
   .panel-body
     pre.pre-x-scrollable
-      code= JSON.pretty_generate @user.photos
+      code= JSON.pretty_generate @user.photos if @user.photos.present?
     pre.pre-x-scrollable
       code
         ' - @user.photos_urls('200x200#').each do |url|
