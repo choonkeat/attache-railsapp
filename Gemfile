@@ -55,3 +55,4 @@ gem "rails_12factor", group: :production
 gem "font-awesome-sass"
 
 gem "attache_rails"
+gem 'imgix'
