@@ -37,10 +37,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    attache_api (0.1.0)
+    attache-api (0.2.0)
       httpclient
-    attache_rails (0.3.0)
-      attache_api
+    attache-rails (0.4.1)
+      attache-api (~> 0.2.0)
       httpclient
       rails (>= 4.0.0)
     binding_of_caller (0.7.2)
@@ -64,7 +64,7 @@ GEM
       sass (~> 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    httpclient (2.6.0.1)
+    httpclient (2.7.0.1)
     i18n (0.7.0)
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
@@ -187,7 +187,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  attache_rails
+  attache-rails
   byebug
   font-awesome-sass
   jbuilder (~> 2.0)

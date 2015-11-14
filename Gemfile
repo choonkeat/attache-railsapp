@@ -54,4 +54,4 @@ gem "rack-cors", require: "rack/cors" # CORS for fonts through Cloudfront
 gem "rails_12factor", group: :production
 gem "font-awesome-sass"
 
-gem "attache_rails"
+gem "attache-rails"
