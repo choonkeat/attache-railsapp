@@ -15,7 +15,16 @@
 //= require turbolinks
 //= require bootstrap
 //= require react/react
+//= require react/react-dom
 //= require attache
 //= require_tree .
 
 Turbolinks.enableProgressBar();
+
+$(document).on('attache:imgerror', 'img', function() {
+  if (window.console) console.log("img.onerror", this.src)
+})
+
+$(document).on('attache:imgload', 'img', function() {
+  if (window.console) console.log("img.onload", this.src)
+})
