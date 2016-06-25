@@ -1,0 +1,38 @@
+{
+  "GET users/index": {
+  },
+  "GET users/new": {
+  },
+  "POST users/create": {
+    "user": [
+      "avatar",
+      "name",
+      {
+        "attaches_discarded": [
+
+        ],
+        "photos": [
+
+        ]
+      }
+    ]
+  },
+  "GET users/show": {
+  },
+  "GET users/edit": {
+  },
+  "POST users/update": {
+    "user": [
+      "avatar",
+      "name",
+      {
+        "attaches_discarded": [
+
+        ],
+        "photos": [
+
+        ]
+      }
+    ]
+  }
+}
