@@ -28,3 +28,13 @@ $(document).on('attache:imgerror', 'img', function() {
 $(document).on('attache:imgload', 'img', function() {
   if (window.console) console.log("img.onload", this.src)
 })
+
+<% if ENV['ATTACHE_URL'].to_s =~ /herokuapp.com/ %>
+$(function() {
+  // wake up sleeping dyno
+  var iframe = document.createElement('iframe')
+  iframe.src = <%= ENV['ATTACHE_URL'].to_json %>
+  iframe.style = 'display: none'
+  document.body.appendChild(iframe)
+})
+<% end %>
